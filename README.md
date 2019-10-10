@@ -45,16 +45,14 @@ sudo docker exec -it --user root vernemq_test /bin/bash
 ```
 git clone https://gitlab.unibo.info/unirobot/vernemq-log.git
 cd vernemq-log
-git clone https://github.com/vernemq/vernemq_demo_plugin.git
-cp -r src vernemq_demo_plugin
-cd vernemq_demo_plugin
+cd vernemq_log_plugin
 ./rebar3 compile
 ```
 
 
 pluginを有効化する
 ```
-vmq-admin plugin enable -n vernemq_demo_plugin -p vernemq-log/vernemq_demo_plugin/_build/default
+vmq-admin plugin enable -n vernemq_log_plugin -p vernemq-log/vernemq_log_plugin/_build/default
 ```
 
 
