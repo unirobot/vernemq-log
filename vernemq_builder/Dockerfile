@@ -1,7 +1,9 @@
 FROM erlio/docker-vernemq
 
 
-COPY ./vernemq_builder/vernemq.conf /vernemq/etc/vernemq.conf
+ENV DOCKER_VERNEMQ_PLUGINS.vernemq_log_plugin=on
+ENV DOCKER_VERNEMQ_PLUGINS.vernemq_log_plugin.path=/vernemq/vernemq_log_plugin/_build/default
+
 COPY ./vernemq_log_plugin /vernemq/vernemq_log_plugin
 USER root
 #erlangを入れるときにjavaの依存関係のエラーが出るのでmkdir -p /usr/share/man/man1により回避
@@ -13,4 +15,3 @@ WORKDIR /vernemq/
 
 USER vernemq
 CMD ["start_vernemq"]
-
